@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvalASPNET", "EvalASPNET\EvalASPNET.csproj", "{0AD939A4-0AAD-4411-AE79-22685FB5094E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacts", "..\..\AppUContact\Contacts\Contacts.csproj", "{FE742293-4B4B-4C0A-A388-4A450EFB108A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0AD939A4-0AAD-4411-AE79-22685FB5094E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD939A4-0AAD-4411-AE79-22685FB5094E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD939A4-0AAD-4411-AE79-22685FB5094E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE742293-4B4B-4C0A-A388-4A450EFB108A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE742293-4B4B-4C0A-A388-4A450EFB108A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE742293-4B4B-4C0A-A388-4A450EFB108A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE742293-4B4B-4C0A-A388-4A450EFB108A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
