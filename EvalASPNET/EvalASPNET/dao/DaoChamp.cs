@@ -9,15 +9,15 @@ using System.Web;
 
 namespace EvalASPNET.dao
 {
-    public class DaoContact
+    public class DaoChamp
     {
-        public static bool saveContacts(List<Donnee> liste)
+        public static void saveChamps(List<Champ> liste)
         {
-            SqlCommand cmd = null;
+            SqlCommand cmd = null ;
             try
             {
                 int result = 0;
-                String req = "SaveContact";
+                String req = "saveChamp";
                 cmd = new SqlCommand();
                 cmd.Connection = DaoBD.MyConnection;
                 cmd.CommandText = req;
@@ -25,44 +25,37 @@ namespace EvalASPNET.dao
 
                 cmd.Connection.Open();
 
-                foreach (Donnee d in liste)
+                foreach (Champ c in liste)
                 {
                     cmd.Parameters.Clear();
 
-                    cmd.Parameters.Add("@idcontact", SqlDbType.Int);
-                    cmd.Parameters["@idcontact"].Value = d.idcontact;
+                    cmd.Parameters.Add("@idchamp", SqlDbType.Int);
+                    cmd.Parameters["@idchamp"].Value = c.idchamp;
 
-                    cmd.Parameters.Add("@iduser", SqlDbType.Int);
-                    cmd.Parameters["@iduser"].Value = d.iduser;
-
-                    cmd.Parameters.Add("@libellechamp", SqlDbType.VarChar);
-                    cmd.Parameters["@libellechamp"].Value = d.libelleChamp;
-
-                    cmd.Parameters.Add("@valeur", SqlDbType.VarChar);
-                    cmd.Parameters["@valeur"].Value = d.valeur;
+                    cmd.Parameters.Add("@libelle", SqlDbType.VarChar);
+                    cmd.Parameters["@libelle"].Value = c.libelle;
 
                     result = cmd.ExecuteNonQuery();
                 }
 
                 cmd.Connection.Close();
-                return true;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
                 if (cmd != null && cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();
-                return false;
             }
         }
 
-        public static bool deleteContact(int userid)
+        public static List<Champ> GetChamps()
         {
             SqlCommand cmd = null;
+            List<Champ> liste = null;
+
             try
-            {
-                int result = 0;
-                String req = "deleteContact";
+            {                
+                string req = "GetChamps";
                 cmd = new SqlCommand();
                 cmd.Connection = DaoBD.MyConnection;
                 cmd.CommandText = req;
@@ -70,19 +63,31 @@ namespace EvalASPNET.dao
 
                 cmd.Connection.Open();
 
-                cmd.Parameters.Add("@iduser", SqlDbType.Int);
-                cmd.Parameters["@iduser"].Value = userid;
-                result = cmd.ExecuteNonQuery();
+                SqlDataReader rs = cmd.ExecuteReader();
+
+                liste = new List<Champ>();
+
+                while (rs.Read())
+                {
+                    liste.Add(new Champ()
+                    {
+                        idchamp = rs.GetInt32(0),
+                        libelle = rs.GetString(1)
+                    });
+                }
+
+                rs.Close();
                 cmd.Connection.Close();
-                return true;
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
                 if (cmd != null && cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();
-                return false;
             }
+
+            return liste;
         }
+
     }
 }

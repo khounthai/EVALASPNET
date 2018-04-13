@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-12 col-xs-12 col-sm-offset-4 col-sm-6 col-md-offset-4 col-md-6 col-lg-offset-4 col-lg-6">
-                            <asp:Button ID="Button1" runat="server" Text="Se conncter" OnClick="ButtonConnexion_Click" />
+                            <asp:Button ID="Button1" runat="server" Text="Se connecter" OnClick="ButtonConnexion_Click" />
                         </div>
                     </div>
                 </form>

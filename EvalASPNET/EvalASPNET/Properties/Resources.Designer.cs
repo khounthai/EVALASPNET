@@ -61,7 +61,7 @@ namespace EvalASPNET.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Server=localhost;Database=ucontact;UID=root;Pwd=&apos;&apos;;.
+        ///   Recherche une chaîne localisée semblable à Data Source=REPEDA-DCHY4M2\sqlexpress;Initial Catalog=ucontact;Integrated Security=True.
         /// </summary>
         public static string ConnectionString {
             get {

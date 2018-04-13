@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Resources;
@@ -10,16 +10,16 @@ namespace EvalASPNET.dao
 {
     public class DaoBD
     {
-        private static MySqlConnection _myConnection;
+        private static SqlConnection _myConnection;
         private static DaoBD instance;
 
         private DaoBD()
         {
-            _myConnection = new MySqlConnection();
+            _myConnection = new SqlConnection();
             _myConnection.ConnectionString = EvalASPNET.Properties.Resources.ConnectionString;
         }
 
-        public static MySqlConnection MyConnection
+        public static SqlConnection MyConnection
         {
             get
             {

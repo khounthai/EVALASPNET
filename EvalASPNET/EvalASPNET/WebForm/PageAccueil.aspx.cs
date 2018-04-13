@@ -33,8 +33,26 @@ namespace EvalASPNET.WebForm
         protected void ButtonConnexion_Click(object sender, EventArgs e)
         {
             User u = GestionContact.GetUser(TextBoxlogin.Text.Trim(), TextBoxMPD.Text.Trim());
-            Session["user"] = u;
-            Server.Transfer("PageListeContacts.aspx",true);
+         
+            if (u != null)
+            {
+                Entity.User user =new Entity.User()
+                {
+                    iduser = (int)u.getIduser(),
+                    login = u.getLogin(),
+                    password = TextBoxMPD.Text.Trim()
+                };
+
+                //enregistre user dans la base locale
+                EvalASPNET.dao.DaoUser.saveUser(user);
+
+                //enregistre les données de l'API vers la base locale                
+                bool b = EvalASPNET.classes.GestionContact.ChagerListeContacts(u);
+
+                Session["userApi"] = u;
+                Session["userLocal"] = user;
+                Server.Transfer("PageListeContacts.aspx", true);
+            }
         }
     }
 }
