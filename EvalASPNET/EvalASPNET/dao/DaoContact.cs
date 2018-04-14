@@ -24,7 +24,7 @@ namespace EvalASPNET.dao
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Connection.Open();
-
+                
                 foreach (Donnee d in liste)
                 {
                     cmd.Parameters.Clear();
@@ -43,7 +43,7 @@ namespace EvalASPNET.dao
 
                     result = cmd.ExecuteNonQuery();
                 }
-
+                
                 cmd.Connection.Close();
                 return true;
             }
@@ -55,8 +55,8 @@ namespace EvalASPNET.dao
                 return false;
             }
         }
-
-        public static bool deleteContact(int userid)
+      
+        public static bool deleteContactByIDUser(int userid)
         {
             SqlCommand cmd = null;
             try
@@ -72,6 +72,35 @@ namespace EvalASPNET.dao
 
                 cmd.Parameters.Add("@iduser", SqlDbType.Int);
                 cmd.Parameters["@iduser"].Value = userid;
+                result = cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                if (cmd != null && cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+                return false;
+            }
+        }
+
+        public static bool deleteContactByID(int idcontact)
+        {
+            SqlCommand cmd = null;
+            try
+            {
+                int result = 0;
+                String req = "deleteContactByID";
+                cmd = new SqlCommand();
+                cmd.Connection = DaoBD.MyConnection;
+                cmd.CommandText = req;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Connection.Open();
+
+                cmd.Parameters.Add("@idcontact", SqlDbType.Int);
+                cmd.Parameters["@idcontact"].Value = idcontact;
                 result = cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
                 return true;

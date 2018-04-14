@@ -17,6 +17,7 @@ namespace EvalASPNET.dao
         {
             _myConnection = new SqlConnection();
             _myConnection.ConnectionString = EvalASPNET.Properties.Resources.ConnectionString;
+            
         }
 
         public static SqlConnection MyConnection

@@ -10,7 +10,7 @@
 namespace EvalASPNET.WebForm {
     
     
-    public partial class PageListeContacts {
+    public partial class PagAjouter {
         
         /// <summary>
         /// Contrôle form1.
@@ -22,31 +22,22 @@ namespace EvalASPNET.WebForm {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Contrôle ButtonAjouter.
+        /// Contrôle Label1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAjouter;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Contrôle ButtonDeconnexion.
+        /// Contrôle FormView1.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDeconnexion;
-        
-        /// <summary>
-        /// Contrôle GridViewListeContact.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewListeContact;
+        protected global::System.Web.UI.WebControls.FormView FormView1;
         
         /// <summary>
         /// Contrôle SqlDataSource1.
@@ -56,5 +47,23 @@ namespace EvalASPNET.WebForm {
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        
+        /// <summary>
+        /// Contrôle Buttonretour.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Buttonretour;
+        
+        /// <summary>
+        /// Contrôle ButtonDeconnexion.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonDeconnexion;
     }
 }

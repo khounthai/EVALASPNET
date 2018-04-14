@@ -81,12 +81,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD\ucontact.bak" />
     <None Include="packages.config" />
-    <Content Include="BD\ucontact.mdf" />
-    <Content Include="BD\ucontact_log.ldf">
-      <DependentUpon>ucontact.mdf</DependentUpon>
-    </Content>
+    <Content Include="BD\ucontactSQlServer.sql" />
     <Content Include="Ressources\Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Ressources\Scripts\jquery-3.0.0.min.map" />
     <None Include="Web.Debug.config">
@@ -147,6 +143,7 @@
     <Content Include="Ressources\Content\bootstrap-reboot.css.map" />
     <Content Include="Ressources\Content\bootstrap-grid.min.css.map" />
     <Content Include="Ressources\Content\bootstrap-grid.css.map" />
+    <Content Include="WebForm\PageAjouter.aspx" />
     <Content Include="WebForm\PageAccueil.aspx" />
     <Content Include="WebForm\PageListeContacts.aspx" />
     <None Include="Ressources\Scripts\jquery-3.0.0-vsdoc.js" />
@@ -189,6 +186,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\PageAjouter.aspx.cs">
+      <DependentUpon>PageAjouter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm\PageAjouter.aspx.designer.cs">
+      <DependentUpon>PageAjouter.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm\PageAccueil.aspx.cs">
       <DependentUpon>PageAccueil.aspx</DependentUpon>

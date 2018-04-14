@@ -18,7 +18,7 @@ namespace EvalASPNET.dao
             try
             {
                 // String sql = "select iduser,login,password where login=@login and password=@password";
-                string req = "GetUser";
+                string req = "GetUserBYLoginAndPassword";
                 cmd = new SqlCommand();
                 cmd.Connection = DaoBD.MyConnection;
                 cmd.CommandText = req;
@@ -65,12 +65,12 @@ namespace EvalASPNET.dao
                 cmd.Parameters.Add("@iduser", SqlDbType.VarChar);
                 cmd.Parameters["@iduser"].Value = u.iduser;
 
-
                 cmd.Parameters.Add("@login", SqlDbType.VarChar);
                 cmd.Parameters["@login"].Value = u.login;
 
                 cmd.Parameters.Add("@password", SqlDbType.VarChar);
                 cmd.Parameters["@password"].Value = u.password;
+
                 cmd.Connection.Open();
 
                 result = cmd.ExecuteNonQuery();

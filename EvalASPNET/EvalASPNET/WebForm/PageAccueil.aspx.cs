@@ -15,19 +15,7 @@ namespace EvalASPNET.WebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           /* MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = dao.DaoBD.MyConnection;
-            cmd.CommandText = "select idcontact,dtcreation from contact";
-            cmd.Connection.Open();
-            MySqlDataReader r = cmd.ExecuteReader();
-            while(r.Read())
-            {
-                Debug.WriteLine(r.GetInt32(0) + "; " + r.GetDateTime(1).ToShortDateString());
-            }
-            r.Close();
-            cmd.Connection.Close();*/
-
-          
+        
         }
 
         protected void ButtonConnexion_Click(object sender, EventArgs e)
@@ -42,17 +30,35 @@ namespace EvalASPNET.WebForm
                     login = u.getLogin(),
                     password = TextBoxMPD.Text.Trim()
                 };
-
+                
                 //enregistre user dans la base locale
                 EvalASPNET.dao.DaoUser.saveUser(user);
-
-                //enregistre les données de l'API vers la base locale                
-                bool b = EvalASPNET.classes.GestionContact.ChagerListeContacts(u);
+                                
+                //charge une liste des contacts avec leurs données via l'API
+                List<EvalASPNET.Entity.Donnee> liste = GestionContact.ChagerListeContacts(u);
+                
+                if (liste != null && liste.Count > 0)
+                {
+                    //supprime les contacts de la base locale
+                     dao.DaoContact.deleteContactByIDUser(user.iduser);
+                    
+                    //enregistre les données de l'API vers la base locale
+                    dao.DaoContact.saveContacts(liste);
+                }
 
                 Session["userApi"] = u;
                 Session["userLocal"] = user;
                 Server.Transfer("PageListeContacts.aspx", true);
+            }else
+            {
+                Entity.User user =dao.DaoUser.findByLoginAndPassword(TextBoxlogin.Text.Trim(), TextBoxMPD.Text.Trim());
+                if (user != null)
+                {
+                    Session["userLocal"] = user;
+                    Server.Transfer("PageListeContacts.aspx", true);
+                }
             }
+            
         }
     }
 }
